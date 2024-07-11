@@ -1,0 +1,97 @@
+<div [attr.show]="isOpen" class="overlay" (click)="goHome()"></div>
+<nav [attr.is-open]="isOpen">
+  <header>
+    @if (isError) {
+      <h1>404 Not Found</h1>
+    } @else if (isLoading) {
+      <div class="shimmer" style="height: 32px; width: 150px; margin: 20px 0"></div>
+    } @else {
+      <h1>{{ userDetail.name }}</h1>
+    }
+    <button type="button" (click)="goBack()">
+      <img src="/assets/icon-close.png" height="24" width="24" alt="back" />
+    </button>
+  </header>
+  @if (isError) {
+    <main>
+      <p>User with id {{ userId }} not found.</p>
+    </main>
+  } @else {
+    <main>
+      <table>
+        <tbody>
+          <tr>
+            <td class="field-name">Username</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px"></div>
+              } @else {
+                {{ userDetail.username }}
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="field-name">Email</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px"></div>
+              } @else {
+                {{ userDetail.email }}
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="field-name">Address</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px; margin: 5px 0;"></div>
+                <div class="shimmer" style="height: 16px; width: 150px; margin: 5px 0;"></div>
+                <div class="shimmer" style="height: 16px; width: 150px; margin: 5px 0;"></div>
+                <div class="shimmer" style="height: 16px; width: 150px;"></div> 
+              } @else {
+                {{ userDetail.address.street }} St.<br />
+                {{ userDetail.address.suite }}<br />
+                {{ userDetail.address.city }}<br />
+                {{ userDetail.address.zipcode }}<br />
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="field-name">Phone</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px"></div>
+              } @else {
+                {{ userDetail.phone }}
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="field-name">Website</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px"></div>
+              } @else {
+                {{ userDetail.website }}
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="field-name">Company</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px; margin: 5px 0;"></div>
+                <div class="shimmer" style="height: 16px; width: 150px; margin: 5px 0;"></div>
+                <div class="shimmer" style="height: 16px; width: 150px;"></div> 
+              } @else {
+                {{ userDetail.company.name }}<br />
+                "{{ userDetail.company.catchPhrase }}"<br />
+                {{ userDetail.company.bs }}<br />
+              }
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  }
+</nav>

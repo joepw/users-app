@@ -1,0 +1,95 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.overlay[show=true] {
+  display: block;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  right: -600px;
+  z-index: 3;
+  width: 600px;
+  height: 100%;
+  box-shadow: 0 6px 12px rgba(107, 82, 82, 0.3);
+  transition: ease 0.2s all;
+  background: #191919;
+  padding: 40px 0;
+}
+
+nav[is-open=true] {
+  right: 0;
+}
+
+header {
+  display: flex;
+  padding: 0 60px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header button {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+header button:hover {
+  background: #555555;
+}
+
+main {
+  padding-left: 60px;
+}
+
+td {
+  padding-bottom: 16px;
+}
+
+.field-name {
+  width: 150px;
+  color: rgba(255, 255, 255, 0.6);
+  vertical-align: top;
+}
+
+.shimmer {
+  background: #8a8a8a;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 600px){
+  nav {
+    width: 100%;
+    right: -100%;
+  }
+  
+  header, main {
+    padding: 0 12px;
+    margin: auto;
+  }
+
+  table {
+    white-space: nowrap;
+    table-layout: fixed;
+    width: 95%;
+  }
+
+  .field-name {
+    width: 100px;
+  }
+
+  td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

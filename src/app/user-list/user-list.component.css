@@ -1,0 +1,91 @@
+header, main {
+  padding-left: 60px;
+}
+
+.user-table {
+  text-align: left;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td, th {
+  padding: 8px 12px;
+  border: 1px solid rgb(47, 47, 47);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+tr td:first-child, tr th:first-child {
+  border-left: none;
+}
+
+tr td:last-child, tr th:last-child {
+  border-right: none;
+}
+
+.shimmer {
+  height: 16px;
+  background: #8a8a8a;
+  border-radius: 6px;
+  margin: 4px 50px 4px 3px;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.name button {
+  visibility: hidden;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8em;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #555555;
+  border-radius: 6px;
+}
+
+tbody tr:hover .name button {
+  visibility: visible;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 16px 0;
+}
+
+@media screen and (max-width: 600px){
+  header, main {
+    padding: 0 20px;
+  }
+
+  .user-table {
+    min-width: 360px;
+    width: 100%;
+  }
+
+  td, th {
+    padding: 8px 6px;
+  }
+
+  th {
+    width: unset !important;
+  }
+
+  .name span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+  }
+
+  .name button span {
+    display: none;
+  }
+}
