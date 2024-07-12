@@ -1,0 +1,9 @@
+main {
+  margin: 40px auto;
+}
+
+@media screen and (max-width: 750px) {
+  main {
+    max-width: unset;
+  }
+}

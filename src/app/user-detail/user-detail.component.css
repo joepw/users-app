@@ -72,11 +72,6 @@ td {
     width: 100%;
     right: -100%;
   }
-  
-  header, main {
-    padding: 0 12px;
-    margin: auto;
-  }
 
   table {
     white-space: nowrap;
@@ -86,6 +81,14 @@ td {
 
   .field-name {
     width: 100px;
+  }
+}
+
+@media screen and (max-width: 450px){
+  header, main {
+    padding: 0 12px;
+    width: 80%;
+    margin: auto;
   }
 
   td {

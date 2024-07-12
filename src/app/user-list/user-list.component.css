@@ -1,11 +1,19 @@
 header, main {
-  padding-left: 60px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 70px;
 }
 
 .user-table {
   text-align: left;
   border-collapse: collapse;
   table-layout: fixed;
+  width: 100%;
+  min-width: 360px;
 }
 
 td, th {
@@ -22,6 +30,11 @@ tr td:first-child, tr th:first-child {
 
 tr td:last-child, tr th:last-child {
   border-right: none;
+}
+
+td a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .shimmer {
@@ -54,21 +67,15 @@ tbody tr:hover .name button {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   text-align: center;
   padding: 16px 0;
+  margin-top: 80px;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 750px) {
   header, main {
     padding: 0 20px;
-  }
-
-  .user-table {
-    min-width: 360px;
-    width: 100%;
   }
 
   td, th {
