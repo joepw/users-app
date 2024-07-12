@@ -1,6 +1,9 @@
 # UsersApp
 
+Deployed App: https://elaborate-douhua-b492e3.netlify.app/
+
 This app fetches and displays user information from the [JSONPlaceholder](https://jsonplaceholder.typicode.com/users) public API.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 
 ## Development server
