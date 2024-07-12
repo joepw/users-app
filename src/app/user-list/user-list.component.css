@@ -8,6 +8,28 @@ header {
   margin-bottom: 70px;
 }
 
+input {
+  display: block;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  outline: none;
+  color: inherit;
+  border-bottom: 1px solid #555555;
+  margin: 0 auto 16px;
+  width: 250px;
+}
+
+input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  background: url('/assets/icon-close.png');
+  background-size: contain;
+  cursor: pointer;
+}
+
 .user-table {
   text-align: left;
   border-collapse: collapse;
@@ -22,6 +44,31 @@ td, th {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+th {
+  cursor: pointer;
+}
+
+.head-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+th img {
+  display: none;
+}
+
+th[selected=true] {
+  background-color: #555555;
+}
+
+th[selected=true] img {
+  display: block;
+}
+
+th[asc=true] img {
+  transform: rotate(180deg);
 }
 
 tr td:first-child, tr th:first-child {

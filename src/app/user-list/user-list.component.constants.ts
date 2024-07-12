@@ -1,0 +1,1 @@
+export const SORT_DIRECTION = ['ASC', 'DESC', ''] as const;
