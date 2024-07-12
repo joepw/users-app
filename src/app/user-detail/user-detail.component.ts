@@ -61,7 +61,7 @@ export class UserDetailComponent {
     this.isLoading = true;
     this.userService.getUserById(id).then(user => {
       if (user) {
-        this.userDetail = user;
+        this.userDetail = { ...this.userDetail, ...user };
       } else {
         this.isError = true;
       }

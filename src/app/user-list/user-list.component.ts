@@ -32,7 +32,7 @@ export class UserListComponent {
   checkPath() {
     const loc = this.location;
     const userId = loc.path().split('/').pop();
-    this.userId = userId || '';
+    this.userId = String(userId);
   }
 
   onClickUser(id: number) {
