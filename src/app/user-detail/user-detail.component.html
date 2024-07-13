@@ -80,13 +80,29 @@
             <td class="field-name">Company</td>
             <td>
               @if (isLoading) {
-                <div class="shimmer" style="height: 16px; width: 150px; margin: 5px 0;"></div>
-                <div class="shimmer" style="height: 16px; width: 150px; margin: 5px 0;"></div>
-                <div class="shimmer" style="height: 16px; width: 150px;"></div> 
+                <div class="shimmer" style="height: 16px; width: 150px;"></div>
               } @else {
-                {{ userDetail.company.name }}<br />
-                "{{ userDetail.company.catchPhrase }}"<br />
-                {{ userDetail.company.bs }}<br />
+                {{ userDetail.company.name }}
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="field-name" style="font-weight: 300;">Catch Phrase</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px;"></div>
+              } @else {
+                {{ userDetail.company.catchPhrase }}
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="field-name" style="font-weight: 300;">Service</td>
+            <td>
+              @if (isLoading) {
+                <div class="shimmer" style="height: 16px; width: 150px;"></div>
+              } @else {
+                {{ userDetail.company.bs }}
               }
             </td>
           </tr>

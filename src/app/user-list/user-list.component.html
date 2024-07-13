@@ -3,65 +3,80 @@
 </header>
 <main>
   <input type="search" placeholder="Search by name, email or website" (input)="onInputChange($event)" [value]="searchKeyword">
-  <table class="user-table">
-    <thead>
-      <tr>
-        <th style="width: 250px;" (click)="sortData('name')" [attr.selected]="sortKey === 'name'" [attr.asc]="sortDirection === 'ASC'">
-          <div class="head-wrapper">
-            Name
-            <img src="/assets/arrow-down.png" height="20" width="20" alt="sortDir" >
-          </div>
-        </th>
-        <th style="width: 250px;" (click)="sortData('email')" [attr.selected]="sortKey === 'email'" [attr.asc]="sortDirection === 'ASC'">
-          <div class="head-wrapper">
-            Email
-            <img src="/assets/arrow-down.png" height="20" width="20" alt="sortDir" >
-          </div>
-        </th>
-        <th style="width: 150px;" (click)="sortData('website')" [attr.selected]="sortKey === 'website'" [attr.asc]="sortDirection === 'ASC'">
-          <div class="head-wrapper">
-            Website
-            <img src="/assets/arrow-down.png" height="20" width="20" alt="sortDir" >
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      @if (isLoading) {
-        @for (item of [].constructor(10); track $index) {
-          <tr>
-            <td><div class="shimmer"></div></td>
-            <td><div class="shimmer"></div></td>
-            <td><div class="shimmer"></div></td>
-          </tr>
+  <section class="table-wrapper">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th style="width: 250px;" (click)="sortData('name')" [attr.selected]="sortKey === 'name'" [attr.asc]="sortDirection === 'ASC'">
+            <div class="head-wrapper">
+              Name
+              <img src="/assets/arrow-down.png" height="20" width="20" alt="sortDir" >
+            </div>
+          </th>
+          <th style="width: 250px;" (click)="sortData('email')" [attr.selected]="sortKey === 'email'" [attr.asc]="sortDirection === 'ASC'">
+            <div class="head-wrapper">
+              Email
+              <img src="/assets/arrow-down.png" height="20" width="20" alt="sortDir" >
+            </div>
+          </th>
+          <th style="width: 150px;" (click)="sortData('website')" [attr.selected]="sortKey === 'website'" [attr.asc]="sortDirection === 'ASC'">
+            <div class="head-wrapper">
+              Website
+              <img src="/assets/arrow-down.png" height="20" width="20" alt="sortDir" >
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (isLoading) {
+          @for (item of [].constructor(10); track $index) {
+            <tr>
+              <td><div class="shimmer"></div></td>
+              <td><div class="shimmer"></div></td>
+              <td><div class="shimmer"></div></td>
+            </tr>
+          }
+        } @else {
+          @for (user of (searchKeyword ? filteredUserList : userList ); track user.id) {
+            <tr>
+              <td>
+                <div class="entries" (click)="onClickUser(user.id)">
+                  <span>{{ user.name }}</span>
+                  <button type="button">
+                    <span>Detail</span>
+                    <img src="/assets/sidebar.png" height="20" width="20" alt="detail" />
+                  </button>
+                </div>
+              </td>
+              <td>
+                <a [href]="'mailto:' + user.email" target="_blank" rel="noreferrer noopener" class="entries">
+                  <span>{{ user.email }}</span>
+                  <button type="button">
+                    <span>Mail</span>
+                    <img src="/assets/mail.png" height="20" width="20" alt="detail" />
+                  </button>
+                </a>
+              </td>
+              <td>
+                <a [href]="'https://' + user.website" target="_blank" rel="noreferrer noopener" class="entries">
+                  <span>{{ user.website }}</span>
+                  <button type="button">
+                    <span>Open</span>
+                    <img src="/assets/newtab.png" height="20" width="20" alt="detail" />
+                  </button>
+                </a>
+              </td>
+            </tr>
+          }
+          @empty {
+            <tr>
+              <td colspan="3" style="text-align: center;">No Data</td>
+            </tr>
+          }
         }
-      } @else {
-        @for (user of (searchKeyword ? filteredUserList : userList ); track user.id) {
-          <tr>
-            <td>
-              <div class="name" (click)="onClickUser(user.id)">
-                <span>{{ user.name }}</span>
-                <button type="button">
-                  <span>Detail</span>
-                  <img src="/assets/arrow-up-right.png" height="20" width="20" alt="detail" />
-                </button>
-              </div>
-            </td>
-            <td>
-              <a [href]="'mailto:' + user.email">{{ user.email }}</a>
-            </td>
-            <td>
-              <a [href]="'https://' + user.website" target="_blank" rel="noopener noreferrer">{{ user.website }}</a></td>
-          </tr>
-        }
-        @empty {
-          <tr>
-            <td colspan="3" style="text-align: center;">No Data</td>
-          </tr>
-        }
-      }
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </section>
 </main>
 <app-user-detail [userId]="userId"></app-user-detail>
 <footer>©2024 Jonathan Prasetya Wijaya</footer>

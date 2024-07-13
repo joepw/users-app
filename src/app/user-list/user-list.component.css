@@ -18,6 +18,8 @@ input {
   border-bottom: 1px solid #555555;
   margin: 0 auto 16px;
   width: 250px;
+  max-width: 100%;
+  text-overflow: ellipsis;
 }
 
 input::-webkit-search-cancel-button {
@@ -30,12 +32,14 @@ input::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
 .user-table {
   text-align: left;
   border-collapse: collapse;
-  table-layout: fixed;
   width: 100%;
-  min-width: 360px;
 }
 
 td, th {
@@ -57,6 +61,11 @@ th {
 
 th img {
   display: none;
+}
+
+th[selected=false]:hover img {
+  display: block;
+  transform: rotate(180deg);
 }
 
 th[selected=true] {
@@ -89,15 +98,22 @@ td a {
   background: #8a8a8a;
   border-radius: 6px;
   margin: 4px 50px 4px 3px;
+  min-width: 150px;
 }
 
-.name {
+.entries {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
 }
 
-.name button {
+.entries span {
+  text-decoration: underline;
+  text-decoration-color: #555555;
+  text-decoration-thickness: 2px;
+}
+
+.entries button {
   visibility: hidden;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.8em;
@@ -109,7 +125,7 @@ td a {
   border-radius: 6px;
 }
 
-tbody tr:hover .name button {
+.entries:hover button {
   visibility: visible;
 }
 
@@ -120,7 +136,7 @@ footer {
   margin-top: 80px;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
   header, main {
     padding: 0 20px;
   }
@@ -133,13 +149,7 @@ footer {
     width: unset !important;
   }
 
-  .name span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-decoration: underline;
-  }
-
-  .name button span {
+  .entries button span {
     display: none;
   }
 }
